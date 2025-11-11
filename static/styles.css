@@ -1,0 +1,284 @@
+:root{
+  --saffron-1:#ff6a00;
+  --saffron-2:#ff8f1b;
+  --ink:#0f172a;
+  --muted:#5b6778;
+  --bg:#fff8f0;
+  --card:#ffffff;
+  --ring:#ffc98a;
+  --radius:16px;
+  --radius-lg:22px;
+  --shadow:0 14px 30px rgba(0,0,0,0.10);
+  --shadow-soft:0 6px 18px rgba(0,0,0,0.08);
+}
+
+*{ box-sizing:border-box; }
+html,body{
+  margin:0; padding:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family: Inter, "Noto Sans Devanagari", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+/* ========== HERO (TOP BAR) ========== */
+.hero{
+  display:grid;
+  grid-template-columns: 280px 1fr 200px;
+  align-items: stretch;
+  gap:22px;
+  margin:18px auto 22px;
+  padding: 0 34px;
+  max-width:1200px; width:calc(100% - 24px);
+  background: linear-gradient(135deg,var(--saffron-1),var(--saffron-2));
+  border-radius: var(--radius-lg);
+  color:#fff; box-shadow: var(--shadow);
+  position:relative; overflow:hidden;
+  min-height: 240px;
+}
+.hero::after{
+  content:""; position:absolute; right:-70px; bottom:-70px;
+  width:420px; height:420px; border-radius:50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.30), rgba(255,255,255,0) 60%);
+}
+
+/* LEFT: Rohini figure (no circle; flush bottom) */
+.hero-left{ position:relative; height:100%; }
+.hero-figure{
+  position:absolute; left:0; bottom:0;
+  height:100%; width:auto; max-height:none;
+  object-fit:contain; object-position:left bottom;
+  filter: drop-shadow(0 12px 26px rgba(0,0,0,.28));
+  user-select:none;
+}
+
+/* CENTER: badge + SINGLE-LINE slogan */
+.hero-mid{
+  display:flex; flex-direction:column; align-items:flex-start; justify-content:center;
+  gap:8px; min-width:0;
+}
+
+.rb-badge{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding: 14px 36px;
+  background:#c62828; color:#fff;
+  border-radius:9999px;
+  border:3px solid #ffffff;
+  box-shadow: 0 10px 22px rgba(0,0,0,.18), inset 0 -2px 0 rgba(0,0,0,.18);
+  text-shadow: 0 1px 0 rgba(0,0,0,.25);
+  font-family: "Khand", "Modak", "Noto Sans Devanagari", Inter, system-ui, sans-serif;
+  font-size: 40px;
+  line-height: 1.05;
+  letter-spacing: .4px;
+  white-space: nowrap;
+}
+
+/* Poster-style SINGLE-LINE slogan */
+.slogan{
+  font-family: "Khand", "Noto Sans Devanagari", Inter, system-ui, sans-serif;
+  font-weight: 900;
+  color:#ffffff;
+  text-shadow: 0 2px 0 rgba(0,0,0,.25);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  font-size: clamp(16px, 1.6vw + 12px, 28px);
+}
+.slogan .hi{ color:#ffeb3b; }
+
+/* RIGHT: BJP logo */
+.logo{
+  width: 180px;
+  height:auto;
+  object-fit:contain;
+  filter: drop-shadow(0 6px 16px rgba(0,0,0,0.25));
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* ===== Shell / Panel / Results ===== */
+.shell{ max-width:1100px; margin:0 auto 28px; width:calc(100% - 24px); }
+
+.panel{
+  background:var(--card); border-radius: var(--radius-lg);
+  padding:16px 18px; box-shadow: var(--shadow-soft);
+  position:relative;
+}
+.panel-header{ display:flex; align-items:baseline; justify-content:space-between; gap:10px; }
+.panel-title{ font-size:18px; font-weight:800; }
+.panel-sub{ color:var(--muted); font-size:12px; }
+.chip{
+  background:#fff3e3; color:#9a5200; border:1px solid #ffd2a3;
+  padding:6px 10px; border-radius:999px; font-size:12px; font-weight:700;
+}
+
+.search-row{ display:flex; gap:12px; margin-top:14px; flex-wrap:wrap; }
+.input-wrap{
+  position:relative; flex:1 1 520px; display:flex; align-items:center;
+  background:#fff; border-radius:12px; border:1.5px solid #ffd2a3;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+}
+.input-wrap:focus-within{ outline:3px solid var(--ring); outline-offset:1px; }
+.input-wrap .icon{ width:20px; height:20px; margin-left:12px; color:#954400; opacity:.8; }
+.input-wrap input{
+  border:none; outline:none; padding:12px 40px 12px 10px; flex:1 1 auto; font-size:15px; background:transparent;
+}
+.ghost-btn{
+  border:0; background:transparent; color:#9a5200; font-weight:700;
+  margin-right:10px; cursor:pointer; opacity:.75;
+}
+.select-wrap{ min-width:240px; display:flex; flex-direction:column; gap:6px; }
+.select-wrap label{ font-size:12px; color:var(--muted); }
+.select-wrap select{
+  padding:10px 12px; border-radius:12px; border:1.5px solid #ffd2a3; background:#fff;
+  font-weight:600;
+}
+
+.suggest-box{
+  position:absolute; left:22px; right:22px; z-index:25; margin-top:6px;
+  background:#fff; border:1px solid #ffe0bf; border-radius:12px; box-shadow: var(--shadow);
+  max-height:340px; overflow:auto;
+}
+.suggest-box.hidden{ display:none; }
+.s-item{ padding:10px 12px; cursor:pointer; display:flex; align-items:center; gap:10px; }
+.s-item:hover, .s-item.active{ background:#fff3e3; }
+.s-name{ font-weight:700; }
+
+.results{ margin-top:20px; }
+.empty{ text-align:center; padding:28px 10px; color: var(--muted); }
+
+.empty-title{ font-weight:900; font-size:18px; color:#9a5200; }
+.empty-sub{ margin-top:6px; }
+
+.card{
+  position:relative; overflow:hidden;
+  background:#fff; border:1px solid #ffe0bf; border-radius:18px;
+  box-shadow: var(--shadow-soft); padding:16px 16px 18px; margin-bottom:14px;
+}
+.card::after{
+  content:""; position:absolute; inset:0;
+  background:
+    url('/static/assets/bjp_logo.svg') no-repeat 98% 50% / 210px auto,
+    url('/static/assets/bjp_logo.png') no-repeat 98% 50% / 210px auto;
+  opacity:.06; pointer-events:none;
+}
+.card .name{ font-size:20px; font-weight:900; margin-bottom:8px; color:#752f00; }
+.kv{ width:100%; border-collapse:collapse; background:#fff; }
+.kv th, .kv td{ border-bottom:1px solid #ffe7cf; padding:9px 10px; text-align:left; font-size:14px; }
+.kv th{ width:200px; background:#fff8ef; color:#6b3d00; font-weight:800; }
+
+.skel{ height:14px; border-radius:8px; background:linear-gradient(90deg,#ffe8cc,#fff2e1,#ffe8cc); background-size:200% 100%; animation:shimmer 1.2s infinite; }
+@keyframes shimmer{ 0%{background-position:200% 0;} 100%{background-position:0 0;} }
+
+.foot{ max-width:1100px; margin:22px auto 32px; width:calc(100% - 24px); color:#8a5310; font-size:12px; text-align:center; }
+
+/* Vertically center the lotus in the right column (keep right aligned) */
+.hero-right{
+  display: flex;
+  align-items: center;     /* vertical center */
+  justify-content: flex-end; /* stay right */
+  height: 100%;            /* match hero bar height */
+}
+
+.logo{
+  display: block;          /* avoid baseline alignment quirks */
+  margin: 0;               /* no accidental top/bottom offset */
+}
+
+/* ========== RESPONSIVE ========== */
+
+/* Tablets */
+@media (max-width: 960px){
+  .hero{
+    min-height:200px;
+    grid-template-columns:220px 1fr 160px;
+    padding:0 24px;
+  }
+  .rb-badge{
+    font-size:32px;
+    padding:10px 28px;
+    border-width:2.5px;
+  }
+  .logo{
+    width:150px;
+  }
+}
+
+/* Mobiles */
+@media (max-width: 640px){
+  /* Hero becomes stacked */
+  .hero{
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    row-gap:8px;
+    padding: 12px 16px 16px;
+    min-height:auto;
+    margin:12px auto 16px;
+  }
+
+  .hero-left{
+    height:140px;
+  }
+  .hero-figure{
+    position:absolute;
+    left:0;
+    bottom:0;
+    height:140px;
+  }
+
+  .hero-mid{
+    align-items:center;
+    text-align:center;
+  }
+  .rb-badge{
+    font-size:22px;
+    padding:8px 18px;
+    border-width:2px;
+  }
+  .slogan{
+    font-size: clamp(14px, 2.2vw + 8px, 20px);
+    white-space: normal;
+  }
+
+  .hero-right{
+    justify-content:center;
+  }
+  .logo{
+    width:110px;
+  }
+
+  .shell{
+    width:calc(100% - 16px);
+    margin-bottom:20px;
+  }
+
+  .panel{
+    padding:12px 12px 14px;
+  }
+  .panel-header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:4px;
+  }
+
+  .search-row{
+    flex-direction:column;
+  }
+  .input-wrap{
+    flex:1 1 auto;
+  }
+  .select-wrap{
+    min-width:0;
+  }
+
+  .suggest-box{
+    left:12px;
+    right:12px;
+  }
+
+  .kv th,
+  .kv td{
+    font-size:13px;
+    padding:7px 8px;
+  }
+}

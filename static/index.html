@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Rohini Lookup</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Noto+Sans+Devanagari:wght@400;600;700&family=Khand:wght@700&family=Modak&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <!-- Tall saffron hero -->
+  <header class="hero">
+    <!-- LEFT: Rohini figure (SVG first, PNG fallback) -->
+    <div class="hero-left">
+      <img class="hero-figure"
+           src="/static/assets/rohini.svg"
+           onerror="this.onerror=null;this.src='/static/assets/rohini.png';"
+           alt="Rohini Bhoir"/>
+    </div>
+
+    <!-- CENTER: Name badge + SINGLE-LINE slogan (no English line) -->
+    <div class="hero-mid">
+      <div class="rb-badge">मा. रोहिणी मनीष भोईर</div>
+      <div class="slogan">
+        नाळ मातीशी निष्ठा जनतेशी प्रत्येकाच्या अडचणीत उभी राहते <span class="hi">पाठीशी…</span>
+      </div>
+    </div>
+
+    <!-- RIGHT: BJP logo (SVG first, PNG fallback) -->
+    <div class="hero-right">
+      <img class="logo"
+           src="/static/assets/bjp_logo.svg"
+           onerror="this.onerror=null;this.src='/static/assets/bjp_logo.png';"
+           alt="BJP"/>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <div class="panel-title">Search by Full Name</div>
+          <div class="panel-sub">Type at least 2 characters to get suggestions.</div>
+        </div>
+        <div class="chip" id="nameColChip">name</div>
+      </div>
+
+      <div class="search-row">
+        <div class="input-wrap">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M11 19a8 8 0 1 0 0-16a8 8 0 0 0 0 16Zm10 2l-6-6"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <input id="q" type="text"
+                 placeholder="Enter full or partial name (Marathi/Hindi/English)…"
+                 autocomplete="off" />
+          <button id="clearBtn" class="ghost-btn" aria-label="Clear">✕</button>
+        </div>
+        <div class="select-wrap">
+          <label for="nameCol">Name column</label>
+          <select id="nameCol"></select>
+        </div>
+      </div>
+
+      <div id="suggestBox" class="suggest-box hidden" role="listbox" aria-label="Name suggestions"></div>
+    </section>
+
+    <section id="results" class="results">
+      <div class="empty">
+        <div class="empty-title">Start your search</div>
+        <div class="empty-sub">Pick the correct “Name column” if suggestions look empty.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div>© <span id="year"></span> Rohini Bhoir · Built with care</div>
+  </footer>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
