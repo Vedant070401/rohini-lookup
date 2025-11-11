@@ -155,13 +155,8 @@ html,body{
   background:#fff; border:1px solid #ffe0bf; border-radius:18px;
   box-shadow: var(--shadow-soft); padding:16px 16px 18px; margin-bottom:14px;
 }
-.card::after{
-  content:""; position:absolute; inset:0;
-  background:
-    url('/static/assets/bjp_logo.svg') no-repeat 98% 50% / 210px auto,
-    url('/static/assets/bjp_logo.png') no-repeat 98% 50% / 210px auto;
-  opacity:.06; pointer-events:none;
-}
+
+
 .card .name{ font-size:20px; font-weight:900; margin-bottom:8px; color:#752f00; }
 .kv{ width:100%; border-collapse:collapse; background:#fff; }
 .kv th, .kv td{ border-bottom:1px solid #ffe7cf; padding:9px 10px; text-align:left; font-size:14px; }
